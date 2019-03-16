@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="web前端攻城狮">
+<meta property="og:type" content="website">
+<meta property="og:title" content="嘭嘭嘭鹏">
+<meta property="og:url" content="http://yoursite.com/index.html">
+<meta property="og:site_name" content="嘭嘭嘭鹏">
+<meta property="og:description" content="web前端攻城狮">
+<meta property="og:locale" content="zh-Hans">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="嘭嘭嘭鹏">
+<meta name="twitter:description" content="web前端攻城狮">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/">
+
+
+
+
+
+  <title>嘭嘭嘭鹏</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left 
+  page-home">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">嘭嘭嘭鹏</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+  <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/16/web页面性能优化以及SEO/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="嘭嘭嘭鹏">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="嘭嘭嘭鹏">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/03/16/web页面性能优化以及SEO/" itemprop="url">web页面性能优化以及SEO</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-16T14:37:24+08:00">
+                2019-03-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <ul>
+<li>web页面性能优化能够提高页面加载速度，提升用户体验度，基于三秒法则，每个网站都极力优化页面性能。</li>
+<li>SEO(Search Engine Optimization)是一种提高网站流量的优化手段。</li>
+</ul>
+<h4 id="一、web页面性能优化"><a href="#一、web页面性能优化" class="headerlink" title="一、web页面性能优化"></a>一、web页面性能优化</h4><h5 id="1-html语义化"><a href="#1-html语义化" class="headerlink" title="1.html语义化"></a>1.html语义化</h5><p>语义化是让标签做自己该做的事，便于其他开发者阅读以及使代码规范，优雅整洁。比如div,span,h,ul,ol,dl,p等等这类的标签的使用。应该非常合理，还有就是注意h标签的断层，及h1标签的使用，这些都是非常重要的。</p>
+<h5 id="2-减少http请求"><a href="#2-减少http请求" class="headerlink" title="2.减少http请求"></a>2.减少http请求</h5><ul>
+<li>从设计实现层面简化页面，保持页面简洁、减少资源的使用时最直接的。</li>
+<li>合理设置缓存</li>
+<li>资源合并与压缩，尽可能的将外部的脚本、样式进行合并，多个合为一个。另外， CSS、 Javascript、Image 都可以用相应的工具进行压缩，压缩后往往能省下不少空间。</li>
+<li>css精灵，合并 CSS图片，减少请求次数。<h5 id="3-css，js文件数量及大小的优化"><a href="#3-css，js文件数量及大小的优化" class="headerlink" title="3.css，js文件数量及大小的优化"></a>3.css，js文件数量及大小的优化</h5></li>
+<li>减少重复代码，对代码进行模块化开发。</li>
+<li>压缩css，js文件，利用gulp、grunt等压缩工具<h5 id="4-减少cookie传输"><a href="#4-减少cookie传输" class="headerlink" title="4.减少cookie传输"></a>4.减少cookie传输</h5></li>
+<li>cookie包含在每次请求和响应中，太大的cookie会严重影响数据传输，因此哪些数据需要写入cookie需要慎重考虑，尽量减少cookie中传输的数据量。</li>
+<li>对于某些静态资源的访问，如CSS、script等，发送cookie没有意义，可以考虑静态资源使用独立域名访问，避免请求静态资源时发送cookie，减少cookie传输次数。　　<h5 id="5-将外部脚本置底"><a href="#5-将外部脚本置底" class="headerlink" title="5.将外部脚本置底"></a>5.将外部脚本置底</h5>将脚本内容在页面信息内容加载后再加载，外链脚本在加载时却会阻塞其他资源，例如在脚本加载完成之前，它后面的图片、样式以及其他脚本都处于阻塞状态，直到脚本加载完成后才会开始加载。如果将脚本放在比较靠前的位置，则会影响整个页面的加载速度从而影响用户体验。解决这一问题最简单可依赖的方法就是将脚本尽可能的往后挪，减少对并发下载的影响。<h5 id="6-将-CSS放在-HEAD中"><a href="#6-将-CSS放在-HEAD中" class="headerlink" title="6.将 CSS放在 HEAD中"></a>6.将 CSS放在 HEAD中</h5>如果将 CSS放在其他地方比如body中，则浏览器有可能还未下载和解析到 CSS就已经开始渲染页面了，这就导致页面刚开始是无样式的状态，用户体验比较差。除此之外，有些浏览器会在 CSS下载完成后才开始渲染页面，如果 CSS放在靠下的位置则会导致浏览器将渲染时间推迟。<h5 id="7-DOM"><a href="#7-DOM" class="headerlink" title="7.DOM"></a>7.DOM</h5>DOM操作应该是脚本中最耗性能的一类操作，例如增加、修改、删除 DOM元素或者对 DOM集合进行操作。<h5 id="8-避免使用-eval和-Function"><a href="#8-避免使用-eval和-Function" class="headerlink" title="8.避免使用 eval和 Function"></a>8.避免使用 eval和 Function</h5>　　每次 eval 或 Function 构造函数作用于字符串表示的源代码时，脚本引擎都需要将源代码转换成可执行代码。这是很消耗资源的操作 ( 通常比简单的函数调用慢 100倍以上)。<h5 id="9-减少作用域链查找"><a href="#9-减少作用域链查找" class="headerlink" title="9. 减少作用域链查找"></a>9. 减少作用域链查找</h5>尽量把变量设为局部变量，因为全局变量处于作用域链的最顶端，访问时的查找次数是最多的。</li>
+</ul>
+<h4 id="二、SEO"><a href="#二、SEO" class="headerlink" title="二、SEO"></a>二、SEO</h4><ul>
+<li>SEO是一种免费的提升网络权重的手段。与之对应的是SEM，即一种付费的营销手段，比如百度推广。</li>
+<li>SEO排名机制，一靠搜索引擎蜘蛛（按分类抓取），二靠权重。</li>
+<li>SEO优化最重要的三要素：标题，关键字，描述<h5 id="1-外链（友情链接）"><a href="#1-外链（友情链接）" class="headerlink" title="1.外链（友情链接）"></a>1.外链（友情链接）</h5>外链是指网站与网站之间的链接向导，提升权重的方式之一。利用互联网是链接与链接实现的一条网络这一特点，<br>链接权重高的大网站，可以让搜索引擎在爬取大网站的时候，顺着连接爬取到你的网站。<br>交换友情链接注意事项：<br>  (1).和内容相近的网站交换<br>  (2).链接交换形式多样（单向链接，双项链接，单向直链….）<br>  (3).灌水式外链<h5 id="2-内链（也称之为站内链接）"><a href="#2-内链（也称之为站内链接）" class="headerlink" title="2.内链（也称之为站内链接）"></a>2.内链（也称之为站内链接）</h5>在同一网站域名下的内容页面之间的互相链接（自己网站的内容链接到自己网站的内部页面）<h5 id="3-内容质量"><a href="#3-内容质量" class="headerlink" title="3.内容质量"></a>3.内容质量</h5>(1).更新，要不断更新你的网站内容。<br>(2).质量，网站内容要高质量。<br>(3).原创，坚持原创内容。<br>(4).关键词密度（2%~8%），一片文章中的关键字占比。<h5 id="4-话术设置（简短，内容丰富）"><a href="#4-话术设置（简短，内容丰富）" class="headerlink" title="4.话术设置（简短，内容丰富）"></a>4.话术设置（简短，内容丰富）</h5>选择比较有吸引力的标题。<h5 id="5-关键词的挖掘"><a href="#5-关键词的挖掘" class="headerlink" title="5.关键词的挖掘"></a>5.关键词的挖掘</h5>(1).头脑风暴<br>(2).利用搜索引擎相关搜索（百度指数）<br>(3).工具<br>(4).长尾关键词<h5 id="6-域名选择"><a href="#6-域名选择" class="headerlink" title="6.域名选择"></a>6.域名选择</h5>(1).后缀选择（.com  .net  .org）<br>(2).短域名<br>(3).域名语义<br>(4).域名的使用历史查询（查询网站不要有黑历史）<h5 id="7-服务器的选择"><a href="#7-服务器的选择" class="headerlink" title="7.服务器的选择"></a>7.服务器的选择</h5>(1).响应速度快（3s定律）<br>(2).稳定<h5 id="8-代码优化"><a href="#8-代码优化" class="headerlink" title="8.代码优化"></a>8.代码优化</h5>1.代码去冗余化（减少冗余，精简，模块化）<br>2.自动化工具（grunt，gulp，webPack，tinyPNG(压缩图片)…..）<br>3.标签语义化（p,h,a…）<h5 id="9-HTTP状态码-合理利用状态码去优化网页"><a href="#9-HTTP状态码-合理利用状态码去优化网页" class="headerlink" title="9.HTTP状态码(合理利用状态码去优化网页)"></a>9.HTTP状态码(合理利用状态码去优化网页)</h5>200（2开头表示网页响应成功）<br>300（302，304重定向）<br>404（网页不存在，可在404页面做公益活动或广告）<br>500（5，6开头表示服务器端错误）<h5 id="10-站群推广"><a href="#10-站群推广" class="headerlink" title="10.站群推广"></a>10.站群推广</h5>通过群体的方式去推广网站，提高网站流量。比如前进的淘宝客，通过发佣推广的方式为淘宝网站带来了一大批优质流量。<h5 id="其他手段"><a href="#其他手段" class="headerlink" title="其他手段"></a>其他手段</h5></li>
+<li>提升客户体验，比如网页界面要简洁易用，网页界面要美观。</li>
+<li>内容多样，可通过添加视频和更新一些新奇的内容。</li>
+<li>代码属性优化。</li>
+<li>相关搜索引擎产品协助，利用百度文库中放网站链接，或者更新一些高质量的内容，以便让百度新闻抓取到。</li>
+</ul>
+<p>————<em>愿你在迷茫时，坚信你的珍贵，爱你所爱，行你所行，听从你心，无问西东。</em></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+  </section>
+
+  
+
+
+          </div>
+          
+
+
+          
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.jpg" alt="嘭嘭嘭鹏">
+            
+              <p class="site-author-name" itemprop="name">嘭嘭嘭鹏</p>
+              <p class="site-description motion-element" itemprop="description">web前端攻城狮</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">嘭嘭嘭鹏</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
