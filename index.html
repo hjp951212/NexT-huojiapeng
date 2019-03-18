@@ -252,6 +252,633 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://hdpx.netlify.com/事件传播/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="嘭嘭嘭鹏">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="嘭嘭嘭鹏">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/事件传播/" itemprop="url">js中事件是如何传播的？</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-18T10:46:54+08:00">
+                2019-03-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h4 id="小历史："><a href="#小历史：" class="headerlink" title="小历史："></a>小历史：</h4><p>事件传播的不同还要从早先的两家浏览器巨头说起，网景和IE为了能争夺市场，互相使用相反的技术，当网景使用事件捕获流的时候，IE则使用事件冒泡流。后来W3C为了能规范规定，直接折中，当事件发生时，先发生向下传播，当到底了以后再次使用事件冒泡，逐渐的冒泡到根节点。</p>
+<h4 id="事件传播分三个阶段："><a href="#事件传播分三个阶段：" class="headerlink" title="事件传播分三个阶段："></a>事件传播分三个阶段：</h4><p>DOM事件流（event flow ）存在三个阶段：事件捕获阶段、处于目标阶段、事件冒泡阶段。</p>
+<ul>
+<li>在事件捕获阶段，事件从document对象沿着文档树向下传播给目标节点。如果目标的任何一个祖先注册了捕捉事件句柄，那么在事件传播的过程中，就会运行这些句柄（IE10及以下不支持捕获型事件）。</li>
+<li>目标阶段发生在目标节点自身，这与0级事件模型提供的事件处理方法类似。</li>
+<li>事件冒泡阶段，在这个阶段，事件将从目标元素向上传播回(像冒泡)Document对象的文档层次（IE8 及以下没有捕获阶段）。<br><img src="https://upload-images.jianshu.io/upload_images/3279071-98b11163d668f34e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="事件传播示意图"></li>
+</ul>
+<p>无论是事件捕获还是事件冒泡，它们都有一个共同的行为，就是事件传播，它就像一跟引线，只有通过引线才能将绑在引线上的鞭炮（事件监听器）引爆，试想一下，如果引线不导火了，那鞭炮就只有一响了！！！</p>
+<p>dom标准事件流的触发的先后顺序为：先捕获再冒泡，即当触发dom事件时，会先进行事件捕获，捕获到事件源之后通过事件传播进行事件冒泡。</p>
+<h4 id="事件监听"><a href="#事件监听" class="headerlink" title="事件监听"></a>事件监听</h4><p>与这两个事件密切相关的是addEventListener、attachEvent：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">addEventListener(event, listener, useCapture)</span><br></pre></td></tr></table></figure></p>
+<p>参数定义：<br>event—（事件名称，如click，不带on）<br>listener—事件监听函数<br>useCapture—是否采用事件捕获进行事件捕捉，默认为false，即采用事件冒泡方式<br>addEventListener在 IE11、Chrome 、Firefox、Safari等浏览器都得到支持。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">attachEvent(event,listener)</span><br></pre></td></tr></table></figure>
+<p>参数定义：<br>event—（事件名称，如onclick，带on）<br>listener—事件监听函数。<br>attachEvent主要用于IE浏览器，并且仅在IE10及以下才支持，IE11已经不在使用这个方法。</p>
+<h4 id="阻止事件冒泡"><a href="#阻止事件冒泡" class="headerlink" title="阻止事件冒泡"></a>阻止事件冒泡</h4><p>w3c的方法是e.stopPropagation()，IE则是使用e.cancelBubble = true<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">evt.stopPropagation();</span><br><span class="line">evt.cancelBubble = true;</span><br></pre></td></tr></table></figure></p>
+<p>在处理浏览器兼容问题时，可以这样：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">if(evt.stopPropagation)&#123;</span><br><span class="line">	evt.stopPropagation();</span><br><span class="line">&#125;else&#123;</span><br><span class="line">	evt.cancelBubble = true;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>还有一种以阻止默认事件的方式去阻止冒泡行为<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">return false</span><br></pre></td></tr></table></figure></p>
+<h4 id="区别"><a href="#区别" class="headerlink" title="区别"></a>区别</h4><ul>
+<li><p>event.stopPropagation();<br> 事件处理过程中，阻止了事件冒泡，但不会阻击默认行为</p>
+</li>
+<li><p>return false;<br> 事件处理过程中，阻止了事件冒泡，也阻止了默认行为</p>
+</li>
+<li><p>event.preventDefault();<br>它的作用是：事件处理过程中，不阻击事件冒泡，但阻击默认行为</p>
+</li>
+</ul>
+<p>————<em>愿你在迷茫时，坚信你的珍贵，爱你所爱，行你所行，听从你心，无问西东。</em></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+
+      
+
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://hdpx.netlify.com/RESTful-API/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="嘭嘭嘭鹏">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="嘭嘭嘭鹏">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/RESTful-API/" itemprop="url">RESTful API？What is it?</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-18T10:46:00+08:00">
+                2019-03-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>REST全称是Representational State Transfer，中文意思是表述性状态转移。不管是英文还是中文解释，都难得其意！<br>那究竟指的是什么的表述? 其实指的就是资源。任何事物，只要有被引用到的必要，它就是一个资源。要让一个资源可以被识别，需要有个唯一标识，在Web中这个唯一标识就是URI(Uniform Resource Identifier)，标识的资源可能是服务器上的一个文件，不过，也可能是一个邮件地址、新闻消息、图书、人名、Internet主机或者任何其它内容。URI既可以看成是资源的地址，也可以看成是资源的名称，它包含URL和URN。</p>
+<ul>
+<li>URL = Universal Resource Locator 统一资源定位符<br>URL唯一地标识一个资源在Internet上的位置。不管用什么方法表示，只要能定位一个资源，就叫URL。</li>
+<li>URN = Universal Resource Name 统一资源名称<br>URN它命名资源但不指定如何定位资源，比如：只告诉你一个人的姓名，不告诉你这个人在哪。<h4 id="一、URL-设计"><a href="#一、URL-设计" class="headerlink" title="一、URL 设计"></a>一、URL 设计</h4><blockquote>
+<p>RESTful 的核心思想就是，客户端发出的数据操作指令都是”动词 + 宾语”的结构。简单来说就是URL定位资源，用HTTP动词描述操作。<br>比如用GET来表示读取，POST表示新建，PUT表示更新，PATCH表示更新，但通常是部分更新，DELETE表示删除。</p>
+</blockquote>
+<h6 id="1-宾语必须是名词"><a href="#1-宾语必须是名词" class="headerlink" title="1.宾语必须是名词"></a>1.宾语必须是名词</h6>宾语就是 API 的 URL，是 HTTP 动词作用的对象。它应该是名词，不能是动词。<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">GET /article</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h6 id="2-复数-URL"><a href="#2-复数-URL" class="headerlink" title="2.复数 URL"></a>2.复数 URL</h6><p>没有统一的规定，但是常见的操作是当要读取一个集合要用复数形式。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">GET /articles</span><br></pre></td></tr></table></figure></p>
+<h6 id="3-避免多级-URL"><a href="#3-避免多级-URL" class="headerlink" title="3.避免多级 URL"></a>3.避免多级 URL</h6><p>当资源需要多级分类时，比较好的做法是，除了第一级，其他级别都用查询字符串表达。这种URL不仅利于扩展，语义也更加明确。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">GET /articles?published=true</span><br></pre></td></tr></table></figure></p>
+<h4 id="二、状态码"><a href="#二、状态码" class="headerlink" title="二、状态码"></a>二、状态码</h4><h6 id="状态码表示必须明确"><a href="#状态码表示必须明确" class="headerlink" title="状态码表示必须明确"></a>状态码表示必须明确</h6><ul>
+<li><p>通常来说：1xx表示相关信息，2xx表示操作成功，3xx表示重定向，4xx表示客户端错误，5xx表示服务器错误。RESTful就要求将这五类按不同请求方式进行细分。</p>
+</li>
+<li><p>以GET为例</p>
+<blockquote>
+<p>200（OK）——表示已在响应中发出<br>204（无内容） —— 资源有空表示<br>301（Moved Permanently） —— 资源的URI已被更新<br>303（See Other） —— 其他（如，负载均衡）<br>304（not modified）—— 资源未更改（缓存）<br>400 （bad request）—— 指代坏请求（如，参数错误）<br>404 （not found）—— 资源不存在<br>406 （not acceptable）—— 服务端不支持所需表示<br>500 （internal server error）—— 通用错误响应<br>503 （Service Unavailable）—— 服务端当前无法处理请求</p>
+</blockquote>
+<h4 id="三、服务器回应"><a href="#三、服务器回应" class="headerlink" title="三、服务器回应"></a>三、服务器回应</h4><h6 id="1-不要返回纯本文"><a href="#1-不要返回纯本文" class="headerlink" title="1.不要返回纯本文"></a>1.不要返回纯本文</h6><p>API 返回的数据格式，不应该是纯文本，而应该是一个 JSON 对象，因为这样才能返回标准的结构化数据。所以，服务器回应的 HTTP 头的Content-Type属性要设为application/json。<br>客户端请求时，也要明确告诉服务器，可以接受 JSON 格式，即请求的 HTTP 头的ACCEPT属性也要设成application/json。</p>
+<h6 id="2-发生错误时，不要返回-200-状态码"><a href="#2-发生错误时，不要返回-200-状态码" class="headerlink" title="2.发生错误时，不要返回 200 状态码"></a>2.发生错误时，不要返回 200 状态码</h6><p>状态码反映发生的错误，并将具体的错误信息放在数据体里面返回。在发生错误时也返回200状态码，这种做法是不恰当的。</p>
+<h6 id="3-提供链接"><a href="#3-提供链接" class="headerlink" title="3.提供链接"></a>3.提供链接</h6><p>在回应中，给出相关链接，便于下一步操作。这样的话，用户只要记住一个 URL，就可以发现其他的 URL。这种方法叫做 HATEOAS。</p>
+<blockquote>
+<p>HATEOAS(Hypermedia as the engine of application state)，超媒体即应用状态引擎。它是REST架构的主要约束。“hepermedia”表示任何包含指向图片、电影、文字等资源的链接，Web是超媒体的经典例子。HATEOAS背后的思想其实非常简单，就是响应中包含指向其它资源的链接。客户端可以利用这些链接和服务器交互。</p>
+</blockquote>
+</li>
+</ul>
+<p>超媒体是什么?<br>当你浏览Web网页时，从一个连接跳到一个页面，再从另一个连接跳到另外一个页面，就是利用了超媒体的概念：把一个个把资源链接起来。<br>要达到这个目的，就要求在表述格式里边加入链接来引导客户端。在《RESTful Web Services》一书中，作者把这种具有链接的特性成为连通性。<br>这一特性应用特别广泛，比如创建订单后通过链接引导客户端如何去付款。</p>
+<p>————<em>愿你在迷茫时，坚信你的珍贵，爱你所爱，行你所行，听从你心，无问西东。</em></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+
+      
+
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://hdpx.netlify.com/HTTP/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="嘭嘭嘭鹏">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="嘭嘭嘭鹏">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/HTTP/" itemprop="url">常见的HTTP？不常见的大道理！</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-18T10:45:05+08:00">
+                2019-03-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h4 id="先来看看一次完整的HTTP请求流程"><a href="#先来看看一次完整的HTTP请求流程" class="headerlink" title="先来看看一次完整的HTTP请求流程"></a>先来看看一次完整的HTTP请求流程</h4><p><img src="https://upload-images.jianshu.io/upload_images/3279071-915d08d268077d20.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="HTTP请求和响应步骤"></p>
+<h4 id="HTTP简介"><a href="#HTTP简介" class="headerlink" title="HTTP简介"></a>HTTP简介</h4><p>１.HTTP协议（HyperText Transfer Protocol，超文本传输协议）是因特网上应用最为广泛的一种网络传输协议，所有的WWW文件都必须遵守这个标准。<br>２.HTTP是一个基于TCP/IP通信协议来传递数据（HTML 文件, 图片文件, 查询结果等）。</p>
+<h4 id="HTTP-工作原理"><a href="#HTTP-工作原理" class="headerlink" title="HTTP 工作原理"></a>HTTP 工作原理</h4><p>１. HTTP协议工作于客户端-服务端架构上。浏览器作为HTTP客户端通过URL向HTTP服务端即WEB服务器发送所有请求。<br>２.Web服务器有：Apache服务器，IIS服务器（Internet Information Services）等。<br>３.Web服务器根据接收到的请求后，向客户端发送响应信息。<br>４.HTTP默认端口号为80，但是你也可以改为8080或者其他端口。</p>
+<h4 id="HTTP消息结构"><a href="#HTTP消息结构" class="headerlink" title="HTTP消息结构"></a>HTTP消息结构</h4><p>1.HTTP是基于客户端/服务端（C/S）的架构模型，通过一个可靠的链接来交换信息，是一个无状态的请求/响应协议。无状态是指Web浏览器和Web服务器之间不需要建立持久的连接，这意味着当一个客户端向服务器端发出请求，然后Web服务器返回响应(response)，连接就被关闭了，在服务器端不保留连接的有关信息.</p>
+<p>2.HTTP请求报文由请求行（request line）、请求头部（header）、空行和请求数据4个部分组成。<br><img src="https://upload-images.jianshu.io/upload_images/3279071-c46c0af79c9241f8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="http请求结构"></p>
+<h6 id="请求行"><a href="#请求行" class="headerlink" title="请求行"></a>请求行</h6><p>分为三个部分：请求方法、请求地址和协议版本。</p>
+<ul>
+<li>请求方法：HTTP/1.1 定义的请求方法有8种：GET、POST、PUT、DELETE、PATCH、HEAD、OPTIONS、TRACE。</li>
+<li>请求地址：由协议，主机，端口，路径组成</li>
+<li>版本协议：HTTP/主版本号.次版本号，常用的有HTTP/1.0和HTTP/1.1<h6 id="请求头部"><a href="#请求头部" class="headerlink" title="请求头部"></a>请求头部</h6>请求头部为请求报文添加了一些附加信息，由“名/值”对组成，每行一对，名和值之间使用冒号分隔。<h6 id="空行"><a href="#空行" class="headerlink" title="空行"></a>空行</h6>请求头部的最后会有一个空行，表示请求头部结束，接下来为请求数据，这一行非常重要，必不可少。<h6 id="请求数据"><a href="#请求数据" class="headerlink" title="请求数据"></a>请求数据</h6>可选部分，比如GET请求就没有请求数据。</li>
+</ul>
+<p>####服务器响应消息<br>HTTP响应也由四个部分组成，分别是：状态行、响应头部、空行和响应正文。</p>
+<h6 id="状态行"><a href="#状态行" class="headerlink" title="状态行"></a>状态行</h6><p>由协议版本，状态码，状态码描述三部分组成。其中协议版本与请求报文一致，状态码描述是对状态码的简单描述。</p>
+<ul>
+<li>一些常见的状态码为：<br>200 - 服务器成功返回网页<br>302 - 跳转到响应头location属性指定地址<br>400 - 客户端请求语法有误，不能被服务器识别<br>403 - 服务器收到请求，但拒绝服务（认证失败）<br>404 - 请求的网页不存在<br>500 - 服务器内部错误<br>503 - 服务不可用<h6 id="响应头部"><a href="#响应头部" class="headerlink" title="响应头部"></a>响应头部</h6>与请求头部类似，为响应报文添加了一些附加信息。<h6 id="响应正文"><a href="#响应正文" class="headerlink" title="响应正文"></a>响应正文</h6>用于存放需要返回给客户端的数据信息。</li>
+</ul>
+<p>————<em>愿你在迷茫时，坚信你的珍贵，爱你所爱，行你所行，听从你心，无问西东。</em></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+
+      
+
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://hdpx.netlify.com/浏览器兼容/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="嘭嘭嘭鹏">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="嘭嘭嘭鹏">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/浏览器兼容/" itemprop="url">谈谈那些让人头疼的浏览器兼容问题</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-18T10:44:11+08:00">
+                2019-03-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>浏览器兼容性问题，是因为不同浏览器的内核不同，导致各个浏览器对网页的解析存在一定的差异，对同一段代码有不同的解析，造成页面显示效果不统一的情况。在大多数情况下，我们的需求是，无论用户用什么浏览器来查看我们的网站或者登陆我们的系统，都应该是统一的显示效果。所以浏览器的兼容性问题是前端开发人员经常会碰到和必须要解决的问题。做前端最怕什么？就是IE6！调个兼容能被搞得心力憔悴。前端最喜欢看到的就是各家浏览器大统一，告别浏览器兼容调试。</p>
+<h4 id="常见的浏览器内核可以分四种：Trident、Gecko、Blink、Webkit"><a href="#常见的浏览器内核可以分四种：Trident、Gecko、Blink、Webkit" class="headerlink" title="常见的浏览器内核可以分四种：Trident、Gecko、Blink、Webkit"></a>常见的浏览器内核可以分四种：Trident、Gecko、Blink、Webkit</h4><table>
+<thead>
+<tr>
+<th>浏览器</th>
+<th>内核</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>IE浏览器</td>
+<td>Trident内核，也称为IE内核</td>
+</tr>
+<tr>
+<td>Chrome浏览器</td>
+<td>Blink内核</td>
+</tr>
+<tr>
+<td>Firefox浏览器</td>
+<td>Gecko内核，俗称Firefox内核</td>
+</tr>
+<tr>
+<td>Safari浏览器</td>
+<td>Webkit内核</td>
+</tr>
+<tr>
+<td>Opera浏览器</td>
+<td>最初是自己的Presto内核，后来从Webkit又到了Blink内核；</td>
+</tr>
+<tr>
+<td>360浏览器</td>
+<td>IE+Chrome双内核</td>
+</tr>
+<tr>
+<td>猎豹浏览器</td>
+<td>IE+Chrome双内核</td>
+</tr>
+<tr>
+<td>百度浏览器</td>
+<td>IE内核</td>
+</tr>
+<tr>
+<td>QQ浏览器</td>
+<td>Trident（兼容模式）+Webkit（高速模式）</td>
+</tr>
+</tbody>
+</table>
+<h4 id="以下列出一些常见的浏览器兼容问题："><a href="#以下列出一些常见的浏览器兼容问题：" class="headerlink" title="以下列出一些常见的浏览器兼容问题："></a>以下列出一些常见的浏览器兼容问题：</h4><h5 id="1-不同浏览器的标签默认的margin和padding不同"><a href="#1-不同浏览器的标签默认的margin和padding不同" class="headerlink" title="1.不同浏览器的标签默认的margin和padding不同"></a>1.不同浏览器的标签默认的margin和padding不同</h5><p>不同的标签，不加样式控制的情况下，各自的margin 和padding差异较大。</p>
+<ul>
+<li>解决方案：<br>可以使用Normalize.css来清除默认样式，也可以使用如下代码：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">body,h1,h2,h3,ul,li,input,div,span,a,form …… &#123; margin:0; padding:0; &#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h5 id="2-设置较小高度标签（一般小于10px），在IE6，IE7，遨游中高度超出自己设置高度"><a href="#2-设置较小高度标签（一般小于10px），在IE6，IE7，遨游中高度超出自己设置高度" class="headerlink" title="2.设置较小高度标签（一般小于10px），在IE6，IE7，遨游中高度超出自己设置高度"></a>2.设置较小高度标签（一般小于10px），在IE6，IE7，遨游中高度超出自己设置高度</h5><ul>
+<li>解决方案<br>给超出高度的标签设置overflow:hidden;或者设置行高line-height 小于你设置的高度。<h5 id="3-IE6双边距问题，在IE6中设置了float-同时又设置margin-就会出现边距问题"><a href="#3-IE6双边距问题，在IE6中设置了float-同时又设置margin-就会出现边距问题" class="headerlink" title="3.IE6双边距问题，在IE6中设置了float , 同时又设置margin , 就会出现边距问题"></a>3.IE6双边距问题，在IE6中设置了float , 同时又设置margin , 就会出现边距问题</h5></li>
+<li>解决方案：<br>设置display:inline;<h5 id="4-图片默认有间距"><a href="#4-图片默认有间距" class="headerlink" title="4.图片默认有间距"></a>4.图片默认有间距</h5></li>
+<li>解决方案：<br>使用float 为img 布局<h5 id="5-IE9一下浏览器不能使用opacity"><a href="#5-IE9一下浏览器不能使用opacity" class="headerlink" title="5.IE9一下浏览器不能使用opacity"></a>5.IE9一下浏览器不能使用opacity</h5></li>
+<li>解决方案：<br>opacity: 0.5;filter: alpha(opacity = 50);filter: progid:DXImageTransform.Microsoft.Alpha(style = 0, opacity = 50);<h5 id="6-cursor-hand-显示手型在safari-上不支持"><a href="#6-cursor-hand-显示手型在safari-上不支持" class="headerlink" title="6.cursor:hand 显示手型在safari 上不支持"></a>6.cursor:hand 显示手型在safari 上不支持</h5></li>
+<li>解决方案：<br>统一使用 cursor:pointer<h5 id="7-边距重叠问题"><a href="#7-边距重叠问题" class="headerlink" title="7.边距重叠问题"></a>7.边距重叠问题</h5>当相邻两个元素都设置了margin 边距时，margin 将取最大值，舍弃最小值；</li>
+<li>解决方案：<br>为了不让边重叠，可以给子元素增加一个父级元素，并设置父级元素为overflow:hidden；<h5 id="8-两个块级元素，父元素设置了overflow-auto；子元素设置了position-relative-且高度大于父元素，在IE6、IE7会被隐藏而不是溢出；"><a href="#8-两个块级元素，父元素设置了overflow-auto；子元素设置了position-relative-且高度大于父元素，在IE6、IE7会被隐藏而不是溢出；" class="headerlink" title="8.两个块级元素，父元素设置了overflow:auto；子元素设置了position:relative ;且高度大于父元素，在IE6、IE7会被隐藏而不是溢出；"></a>8.两个块级元素，父元素设置了overflow:auto；子元素设置了position:relative ;且高度大于父元素，在IE6、IE7会被隐藏而不是溢出；</h5></li>
+<li>解决方案：<br>父级元素设置position:relative<h5 id="9-标签最低高度设置min-height不兼容"><a href="#9-标签最低高度设置min-height不兼容" class="headerlink" title="9.标签最低高度设置min-height不兼容"></a>9.标签最低高度设置min-height不兼容</h5>min-height本身就是一个不兼容的CSS属性，所以设置min-height时不能很好的被各个浏览器兼容</li>
+<li>解决方案：<br>如果我们要设置一个标签的最小高度200px，需要进行的设置为：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;min-height:200px; height:auto ![ImportAnt]; height:200px; overflow:visible;&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>在网站设计的时候，应该注意css样式兼容不同浏览器问题，特别是对完全使用DIV CSS设计的网，就应该更注意IE6 IE7 FF对CSS样式的兼。下面针对不同浏览器列出其专用写法：<br>浏览器     | 写法<br>——– | —–<br>通用  |  height: 100px;<br>IE6 专用  | _height: 100px;<br>IE6 专用   | <em>height: 100px;<br>IE7 专用  | </em>+height: 100px;<br>IE7、FF 共用  | height: 100px !important;</p>
+<p>————<em>愿你在迷茫时，坚信你的珍贵，爱你所爱，行你所行，听从你心，无问西东。</em></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+
+      
+
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://hdpx.netlify.com/web页面性能优化以及SEO/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -435,7 +1062,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-count">5</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
