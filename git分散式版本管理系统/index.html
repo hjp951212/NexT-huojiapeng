@@ -1,0 +1,786 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/ournet.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/ournet.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/ournet.png?v=5.1.4">
+
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="嘭嘭嘭鹏" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="首先安装git，官网下载即可https://git-scm.com/downloads 第二是设置账户，鼠标右键，选择git bush，在命令窗口中进行设置 1git config --global user.name &amp;quot;Your Name&amp;quot; git config --global user.email &amp;quot;email@example.com&amp;quot; 第三是在项目文">
+<meta name="keywords" content="web开发">
+<meta property="og:type" content="article">
+<meta property="og:title" content="git分散式版本管理系统">
+<meta property="og:url" content="https://hdpx.netlify.com/git分散式版本管理系统/index.html">
+<meta property="og:site_name" content="嘭嘭嘭鹏">
+<meta property="og:description" content="首先安装git，官网下载即可https://git-scm.com/downloads 第二是设置账户，鼠标右键，选择git bush，在命令窗口中进行设置 1git config --global user.name &amp;quot;Your Name&amp;quot; git config --global user.email &amp;quot;email@example.com&amp;quot; 第三是在项目文">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-03-23T13:42:52.941Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="git分散式版本管理系统">
+<meta name="twitter:description" content="首先安装git，官网下载即可https://git-scm.com/downloads 第二是设置账户，鼠标右键，选择git bush，在命令窗口中进行设置 1git config --global user.name &amp;quot;Your Name&amp;quot; git config --global user.email &amp;quot;email@example.com&amp;quot; 第三是在项目文">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://hdpx.netlify.com/git分散式版本管理系统/">
+
+
+
+
+
+  <title>git分散式版本管理系统 | 嘭嘭嘭鹏</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+    <a href="https://github.com/hjp951212" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewbox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">嘭嘭嘭鹏</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Stay Hungry, Stay Foolish</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://hdpx.netlify.com/git分散式版本管理系统/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="嘭嘭嘭鹏">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="嘭嘭嘭鹏">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">git分散式版本管理系统</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-23T21:20:34+08:00">
+                2019-03-23
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  3.1k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  11
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h5 id="首先安装git，官网下载即可"><a href="#首先安装git，官网下载即可" class="headerlink" title="首先安装git，官网下载即可"></a>首先安装git，官网下载即可</h5><p><a href="https://git-scm.com/downloads" target="_blank" rel="noopener">https://git-scm.com/downloads</a></p>
+<h5 id="第二是设置账户，鼠标右键，选择git-bush，在命令窗口中进行设置"><a href="#第二是设置账户，鼠标右键，选择git-bush，在命令窗口中进行设置" class="headerlink" title="第二是设置账户，鼠标右键，选择git bush，在命令窗口中进行设置"></a>第二是设置账户，鼠标右键，选择git bush，在命令窗口中进行设置</h5> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name &quot;Your Name&quot; git config --global user.email &quot;email@example.com&quot;</span><br></pre></td></tr></table></figure>
+<h5 id="第三是在项目文件夹中右键git-bush进入命令窗口，键入git-init-初始化仓库，命令会在本地文件夹创建一个-git的隐藏文件夹，通过文件夹设置可以看到该文件夹，请勿修改该文件夹内容"><a href="#第三是在项目文件夹中右键git-bush进入命令窗口，键入git-init-初始化仓库，命令会在本地文件夹创建一个-git的隐藏文件夹，通过文件夹设置可以看到该文件夹，请勿修改该文件夹内容" class="headerlink" title="第三是在项目文件夹中右键git bush进入命令窗口，键入git init 初始化仓库，命令会在本地文件夹创建一个.git的隐藏文件夹，通过文件夹设置可以看到该文件夹，请勿修改该文件夹内容"></a>第三是在项目文件夹中右键git bush进入命令窗口，键入git init 初始化仓库，命令会在本地文件夹创建一个.git的隐藏文件夹，通过文件夹设置可以看到该文件夹，请勿修改该文件夹内容</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git init</span><br></pre></td></tr></table></figure>
+<h5 id="1-通过该命令把文件存入仓库暂存区"><a href="#1-通过该命令把文件存入仓库暂存区" class="headerlink" title="1.通过该命令把文件存入仓库暂存区"></a>1.通过该命令把文件存入仓库暂存区</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git add 文件名.后缀</span><br><span class="line">git add index.html</span><br></pre></td></tr></table></figure>
+<h5 id="2-通过该命令把add过的文件提交到仓库工作区，-m后面是对本次提交的解释，不建议为空，方便其他工作人员简单明了的理解你干了什么"><a href="#2-通过该命令把add过的文件提交到仓库工作区，-m后面是对本次提交的解释，不建议为空，方便其他工作人员简单明了的理解你干了什么" class="headerlink" title="2.通过该命令把add过的文件提交到仓库工作区，-m后面是对本次提交的解释，不建议为空，方便其他工作人员简单明了的理解你干了什么"></a>2.通过该命令把add过的文件提交到仓库工作区，-m后面是对本次提交的解释，不建议为空，方便其他工作人员简单明了的理解你干了什么</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">git commit -m “解释文档”</span><br><span class="line">git commit -m &quot;start working&quot;</span><br><span class="line">```　　</span><br><span class="line">##### 3.版本回退</span><br><span class="line">　　有了版本提交肯定还要有版本回退不是吗？万一哪天你bug了，你肯定不想一行一行的删代码的，那么我们的git是怎么做的呢？</span><br></pre></td></tr></table></figure>
+<p>git reset –hard 0023a4<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">　　咦，这些git命令大都似曾相识，就是不明白是做什么的也能看出是个命令来着，但是这个0023a4是个什么鬼来着？其实这是我们的每一次对仓库做出修改时git自动为每一次操作保留的id，你当然不需要把id全部都写出来回归版本，但是也不要输入太少，因为在git多人协作的仓库中，那提交与回退的数量也是惊人的。不过这个id，我们又是如何获取的呢？</span><br><span class="line">##### 4.获取每一次仓库更改操作保留的id</span><br></pre></td></tr></table></figure></p>
+<p>git reflog<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">　　是不是很简单，过去的commit和reset操作全都出来啦，赶快看看你要回退到哪个版本吧！</span><br><span class="line">##### 5.撤销修改，针对文件是保留到工作区之后修改的和暂存区之后修改的两种情况会有不通过的结果,当然，你撤销修改的git代码是一致的</span><br></pre></td></tr></table></figure></p>
+<p>git checkout – index.html<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">#### 现在呢，就遇到的两种不同的情况分析得到的不同结果，以免将来一脸懵逼。</span><br><span class="line">　　（1）保存到工作区后的修改，然后执行git checkout：回归到版本库工作区的状态</span><br><span class="line">　　（2）保存到暂存区后的修改，然后执行git checkout：回归到版本库暂存区的状态</span><br><span class="line">　　其实也不麻烦不是吗？就是无论如何，我都只退一步，这么理解会不会简单了呢？！</span><br><span class="line">　　当然，我们能够在每一次提交之前发现自己做了一个不可修复的错误，使用  git checkout -- file  总是好的，但是，如果你不但犯了一个致命的错误，还把它提交到了暂存区了呢？当然我们是有办法修复这个错误的，我们在之前的文章中也提到了</span><br><span class="line">　　就是  git reset --hard  00123  嘛！回退版本！直接回到上一次提交到仓库时的状态。当然，你也可以选择更加温和的方式，仅仅撤销本次提交到暂存区的操作，保留你在文档中的修改，毕竟，万一你只需要修改掉“老子不干了这句话”，回退版本会不会太夸张了。撤销提交保留修改命令为</span><br><span class="line">git reset HEAD index.html</span><br><span class="line">##### 6.删除文件</span><br><span class="line">　　在需要删除某一个文件的时候，我们只需要输入 git rm file就可以啦，之后记得要commit一下哦，把你的删除提交到工作区，告诉仓库你删了谁</span><br></pre></td></tr></table></figure></p>
+<p>git rm test.txtgit commit -m “confirm rm”<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">##### 7.远程库</span><br><span class="line">　　首先你需要在GitHub仓库键入你的ssh密匙，你可以在你的c盘user/administrator/.ssh文件夹中找到，注意这是一个隐藏文件夹，查看隐藏文件夹的方式可自行百度。如果在隐藏文件夹中没有找到该文件，需要打开 git bush 键入下列命令创建该文件，空白部分为你的邮箱</span><br><span class="line">ssh-keygen -t rsa -C &quot;    @    .com&quot;</span><br><span class="line">无需设置密码，一直回车即可。然后打开GitHub，把你在c盘user/administrator/.ssh文件夹中获取的 id_rsa.pub（可用记事本打开全部复制）内容复制到GitHub设置中的ssh密匙处即可</span><br><span class="line">（1）先有本地库，将本地库推送到远程。在github上创建一个仓库，例 learngit</span><br><span class="line">　　连接远程库,注意使用英文字符，小心复制过来的字符的标点符号是中文样式导致的无法连接</span><br><span class="line">要关联一个远程库，使用命令</span><br></pre></td></tr></table></figure></p>
+<p>git remote add origin git@server-name:path/repo-name.git<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">关联后，使用命令git push -u origin master第一次推送master分支的所有内容；</span><br><span class="line">此后，每次本地提交后，只要有必要，就可以使用命令git push origin master推送最新修改；</span><br><span class="line">　　origin是远程仓库的意思，master,主分支，后面我们会提到分支的概念，-u的代码运用是为了将本地分支和远程分支关联起来，今后我们可以省掉这一部分。</span><br><span class="line">只要本地库做出了修改，我们就可以通过下面的指令将其推送到远程库</span><br><span class="line">git push origin master</span><br><span class="line">（2）先有远程库，后有本地库</span><br><span class="line">　　键入git clone 命令克隆远程库</span><br><span class="line">git clone git@github.com:legendforfree/learngit.git</span><br><span class="line">##### 8.分支</span><br><span class="line">　　在之前我们讲到，我们有一个master分支，也就是我们的主分支，但是在我们多人协作的具体工作中，一条主分支是不够的，为了大家的工作互不干扰，我们需要在主分支的基础上创建自己的工作分支，等到自己的功能完善再将其合并到主分支。下面我们从创建一个分支开始吧</span><br><span class="line">　　（1）创建分支</span><br></pre></td></tr></table></figure></p>
+<p>git branch dev<br>git checkout dev<br>git branch dev 命令是创建dev分支，<br>git checkout dev 命令是切换到dev分支<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">　　当然我们也可以是选择 git checkout -b dev 一次性完成上面的两条命令</span><br><span class="line">　　查看分支命令，并在当前分支上加*标识</span><br></pre></td></tr></table></figure></p>
+<p>git branch<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">　　（2）合并分支</span><br><span class="line">　　切换到主分支或组分支，使用 git merge 命令合并需要合并的分支，例如把dev分支合并到master分支</span><br></pre></td></tr></table></figure></p>
+<p>git checkout master　　　　//切换到主分支<br>git merge dev　　　　　　　　//合并dev分支到master分支<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">　　（3）删除分支</span><br><span class="line">　　把dev分支合并到主分支之后，你可以根据自己的需要看是否需要删除dev分支，git鼓励创建分支再合并删除，因为这样是更无害而安全的。</span><br></pre></td></tr></table></figure></p>
+<p>git branch -d dev<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"> 　　（4）任务现场</span><br><span class="line">　　暂存工作内容但不保留到暂存区或工作区</span><br><span class="line">　　假设你工作还没完成，但是你接到了一个紧急的任务，因为没完成所以不能提交，git提供了一个保存任务现场的命令。</span><br></pre></td></tr></table></figure></p>
+<p>git stash<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">　　使用该命令，你做出的不完善的工作将被隐藏。然后你就可以快乐的创建一个bug分支愉快的改bug了。当你完成工作，合并并删除bug分支之后，还得回到我们的任务现场，因为除了紧急任务需要完成，我们的日常工作也是一刻不得放缓！那么这时候，我们又该怎么办呢？</span><br></pre></td></tr></table></figure></p>
+<p>git stash list　　　　//查看保留任务现场的列表<br>git stash pop　　　　　//把任务现场内容提回本地并从list删除，也可以在 pop 后面加上具体提取哪一个现场 stash@{0}<br>git stash drop　　　　//从list删除多余的隐藏任务现场，不提取<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">　　（5）推送分支</span><br><span class="line">　　推送分支就是把改分支上的所有本地提交推送到远程库，推送时要指定本地分支，这样，git就会把该分支推送到远程库上对应的分支上</span><br></pre></td></tr></table></figure></p>
+<p>git push origin dev<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">　　把我们做开发的dev分支推送到远程</span><br><span class="line">　　(6)拉取分支</span><br><span class="line">　　在我们推送分支之前往往需要先拉取,因为你不知道在你修改项目的时间范围内,有没有其他人往远程进行过推送,如果有推送,那么你不pull就push肯定是要bug的,拉取远程库到本地的代码为</span><br></pre></td></tr></table></figure></p>
+<p>git pull origin dev<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">8.创建标签</span><br><span class="line">　　因为git的id比较长而不规则，所以有些不好记，所以git提供了一种方法作为对指定的某一个版本进行标记</span><br></pre></td></tr></table></figure></p>
+<p>git tag -a v1.0 -m “描述”a24534<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">　　git tag是添加标签，-a 指定标签名（-a和-m可省略）v1.0是标签名，也可以理解为产品的版本号，a24534是要打标签的分支上的那次操作的id，可以忽略，忽略默认标签给分支最后一次commit</span><br></pre></td></tr></table></figure></p>
+<p>git tag        //查看标签，标签是按照字母排序的，不是创建时间<br>git tag show        //查看标签具体信息<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">　　删除标签</span><br></pre></td></tr></table></figure></p>
+<p>git tag -d v1.0<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">　　推送标签到远程</span><br></pre></td></tr></table></figure></p>
+<p>git push origin tag v1.0<br>git push origin –tags　　　　//推送全部本地标签<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">　　删除远程标签</span><br></pre></td></tr></table></figure></p>
+<p>git tag -d v1.0//先删除本地标签<br>git push origin :refs/tags/v1.0//删除远程标签<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">### 常用命令</span><br></pre></td></tr></table></figure></p>
+<p>git branch 查看本地所有分支<br>git status 查看当前状态<br>git commit 提交<br>git branch -a 查看所有的分支<br>git branch -r 查看远程所有分支<br>git commit -am “init” 提交并且加注释<br>git remote add origin <a href="mailto:git@192.168.1.119" target="_blank" rel="noopener">git@192.168.1.119</a>:ndshow<br>git push origin master 将文件给推到服务器上<br>git remote show origin 显示远程库origin里的资源<br>git push origin master:develop<br>git push origin master:hb-dev 将本地库与服务器上的库进行关联<br>git checkout –track origin/dev 切换到远程dev分支<br>git branch -D master develop 删除本地库develop<br>git checkout -b dev 建立一个新的本地分支dev<br>git merge origin/dev 将分支dev与当前分支进行合并<br>git checkout dev 切换到本地dev分支<br>git remote show 查看远程库<br>git add .<br>git rm 文件名(包括路径) 从git中删除指定文件<br>git clone git://github.com/schacon/grit.git 从服务器上将代码给拉下来<br>git config –list 看所有用户<br>git ls-files 看已经被提交的<br>git rm [file name] 删除一个文件<br>git commit -a 提交当前repos的所有的改变<br>git add [file name] 添加一个文件到git index<br>git commit -v 当你用－v参数的时候可以看commit的差异<br>git commit -m “This is the message describing the commit” 添加commit信息<br>git commit -a -a是代表add，把所有的change加到git index里然后再commit<br>git commit -a -v 一般提交命令<br>git log 看你commit的日志<br>git diff 查看尚未暂存的更新<br>git rm a.a 移除文件(从暂存区和工作区中删除)<br>git rm –cached a.a 移除文件(只从暂存区中删除)<br>git commit -m “remove” 移除文件(从Git中删除)<br>git rm -f a.a 强行移除修改后文件(从暂存区和工作区中删除)<br>git diff –cached 或 $ git diff –staged 查看尚未提交的更新<br>git stash push 将文件给push到一个临时空间中</p>
+<h2 id="git-stash-pop-将文件从临时空间pop下来"><a href="#git-stash-pop-将文件从临时空间pop下来" class="headerlink" title="git stash pop 将文件从临时空间pop下来"></a>git stash pop 将文件从临时空间pop下来</h2><p>git remote add origin <a href="mailto:git@github.com" target="_blank" rel="noopener">git@github.com</a>:username/Hello-World.git</p>
+<h2 id="git-push-origin-master-将本地项目给提交到服务器中"><a href="#git-push-origin-master-将本地项目给提交到服务器中" class="headerlink" title="git push origin master 将本地项目给提交到服务器中"></a>git push origin master 将本地项目给提交到服务器中</h2><h2 id="git-pull-本地与服务器端同步"><a href="#git-pull-本地与服务器端同步" class="headerlink" title="git pull 本地与服务器端同步"></a>git pull 本地与服务器端同步</h2><p>git push (远程仓库名) (分支名) 将本地分支推送到服务器上去。</p>
+<h2 id="git-push-origin-serverfix-awesomebranch"><a href="#git-push-origin-serverfix-awesomebranch" class="headerlink" title="git push origin serverfix:awesomebranch"></a>git push origin serverfix:awesomebranch</h2><p>git fetch 相当于是从远程获取最新版本到本地，不会自动merge<br>git commit -a -m “log_message” (-a是提交所有改动，-m是加入log信息) 本地修改同步至服务器端 ：<br>git branch branch_0.1 master 从主分支master创建branch_0.1分支<br>git branch -m branch_0.1 branch_1.0 将branch_0.1重命名为branch_1.0<br>git checkout branch_1.0/master 切换到branch_1.0/master分支<br>du -hs<br>git branch 删除远程branch<br>git push origin :branch_remote_name<br>git branch -r -d branch_remote_name</p>
+<hr>
+<p>初始化版本库，并提交到远程服务器端<br>mkdir WebApp<br>cd WebApp<br>git init本地初始化<br>touch README<br>git add README添加文件<br>git commit -m ‘first commit’<br>git remote add origin <a href="mailto:git@github.com" target="_blank" rel="noopener">git@github.com</a>:daixu/WebApp.git 增加一个远程服务器端<br>上面的命令会增加URL地址为<a href="mailto:&#39;git@github.com" target="_blank" rel="noopener">&#39;git@github.com</a>:daixu/WebApp.git’，名称为origin的远程服务器库，以后提交代码的时候只需要使用 origin别名即可<br><code>`</code></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+
+      
+      <div>
+        <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+
+        </div>
+      
+
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/跨域及解决方案/" rel="next" title="跨域及解决方案">
+                <i class="fa fa-chevron-left"></i> 跨域及解决方案
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.jpg" alt="嘭嘭嘭鹏">
+            
+              <p class="site-author-name" itemprop="name">嘭嘭嘭鹏</p>
+              <p class="site-description motion-element" itemprop="description">web前端攻城狮、前端知识共享、实践教程、前沿技术共同学习</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#首先安装git，官网下载即可"><span class="nav-number">1.</span> <span class="nav-text">首先安装git，官网下载即可</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#第二是设置账户，鼠标右键，选择git-bush，在命令窗口中进行设置"><span class="nav-number">2.</span> <span class="nav-text">第二是设置账户，鼠标右键，选择git bush，在命令窗口中进行设置</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#第三是在项目文件夹中右键git-bush进入命令窗口，键入git-init-初始化仓库，命令会在本地文件夹创建一个-git的隐藏文件夹，通过文件夹设置可以看到该文件夹，请勿修改该文件夹内容"><span class="nav-number">3.</span> <span class="nav-text">第三是在项目文件夹中右键git bush进入命令窗口，键入git init 初始化仓库，命令会在本地文件夹创建一个.git的隐藏文件夹，通过文件夹设置可以看到该文件夹，请勿修改该文件夹内容</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#1-通过该命令把文件存入仓库暂存区"><span class="nav-number">4.</span> <span class="nav-text">1.通过该命令把文件存入仓库暂存区</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-通过该命令把add过的文件提交到仓库工作区，-m后面是对本次提交的解释，不建议为空，方便其他工作人员简单明了的理解你干了什么"><span class="nav-number">5.</span> <span class="nav-text">2.通过该命令把add过的文件提交到仓库工作区，-m后面是对本次提交的解释，不建议为空，方便其他工作人员简单明了的理解你干了什么</span></a></li></ol><li class="nav-item nav-level-2"><a class="nav-link" href="#git-stash-pop-将文件从临时空间pop下来"><span class="nav-number"></span> <span class="nav-text">git stash pop 将文件从临时空间pop下来</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#git-push-origin-master-将本地项目给提交到服务器中"><span class="nav-number"></span> <span class="nav-text">git push origin master 将本地项目给提交到服务器中</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#git-pull-本地与服务器端同步"><span class="nav-number"></span> <span class="nav-text">git pull 本地与服务器端同步</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#git-push-origin-serverfix-awesomebranch"><span class="nav-number"></span> <span class="nav-text">git push origin serverfix:awesomebranch</span></a></li></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">嘭嘭嘭鹏</span>
+
+  
+</div>
+
+<div class="powered-by">
+<i class="fa fa-user-md"></i><span id="busuanzi_container_site_pv">
+  本站访客数:<span id="busuanzi_value_site_pv"></span>
+</span>
+</div>
+
+<!--
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+-->
+
+
+<div class="theme-info">
+  <span class="post-count"> &nbsp;&nbsp;|&nbsp;&nbsp; 博客全站共11.1k字</span>
+</div>
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+
+
+  <!-- 页面点击小红心 -->
+  <script type="text/javascript" src="/js/src/love.js"></script>
+</body>
+</html>
+
+
